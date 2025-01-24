@@ -2,7 +2,7 @@
 
 Kanban board with draggable elements that I developed. All data is stored in localStorage.
 
-[Here is](https://alexey-hohlov.github.io/auth-forms/) a live demo, deployed on GitHub Pages 🌎
+[Here is](https://alexey-hohlov.github.io/kanban-board/) a live demo, deployed on GitHub Pages 🌎
 
 <p align="center">
  <img width="640" alt="image" src="https://github.com/user-attachments/assets/45cf299a-5e91-47cd-9052-23a9c4c2b794" />
