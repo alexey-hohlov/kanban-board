@@ -18,7 +18,6 @@ Kanban board with draggable elements that I developed. All data is stored in loc
 
 ## 🚀 Features
 * Drag-and-Drop functionality
-* Animated components
 * Creating, editing, and deleting boards/columns/tasks
 * Pin favorite boards
 * All data is automatically saved to localStorage
