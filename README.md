@@ -4,6 +4,10 @@ Kanban board with draggable elements that I developed. All data is stored in loc
 
 [Here is](https://alexey-hohlov.github.io/auth-forms/) a live demo, deployed on GitHub Pages 🌎
 
+<p align="center">
+ <img width="540" alt="image" src="https://github.com/user-attachments/assets/974f1d8b-785a-4782-b861-430d2d67935a" />
+</p>
+
 ## 💻 Technologies
 * TypeScript
 * React
