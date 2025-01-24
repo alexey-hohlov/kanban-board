@@ -1,0 +1,34 @@
+.modal-overlay-enter {
+  opacity: 0;
+}
+
+.modal-overlay-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+
+.modal-overlay-exit {
+  opacity: 1;
+}
+.modal-overlay-exit-active {
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+.modal-content-enter {
+  scale: 0.5;
+}
+
+.modal-content-enter-active {
+  scale: 1;
+  transition: scale 300ms linear;
+}
+
+.modal-content-exit {
+  scale: 1;
+}
+
+.modal-content-exit-active {
+  scale: 0.5;
+  transition: scale 300ms linear;
+}

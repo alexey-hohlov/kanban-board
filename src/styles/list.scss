@@ -1,0 +1,7 @@
+.list-wrapper {
+  transition: scale 200ms linear, opacity 200ms linear;
+  &:hover {
+    scale: 1.015;
+    opacity: 1;
+  }
+}

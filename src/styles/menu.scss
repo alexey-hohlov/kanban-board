@@ -1,0 +1,16 @@
+.menu-enter {
+  opacity: 0;
+}
+
+.menu-enter-active {
+  opacity: 1;
+  transition: opacity 200ms linear;
+}
+
+.menu-exit {
+  opacity: 1;
+}
+.menu-exit-active {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
