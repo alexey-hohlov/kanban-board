@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { BurgerIcon } from '@/assets';
-import { Button, Logo } from '@/components';
+import { BackButton, Button, Logo } from '@/components';
 import { ROUTES } from '@/constants';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import { uiSlice } from '@/store/reducers/uiReducer';
@@ -19,9 +19,12 @@ const Header: React.FC = () => {
       <Link to={ROUTES.HOME.PATH}>
         <Logo />
       </Link>
-      <Button onClick={handleSidebar}>
-        <BurgerIcon />
-      </Button>
+      <div className='flex gap-2'>
+        <BackButton />
+        <Button onClick={handleSidebar}>
+          <BurgerIcon />
+        </Button>
+      </div>
     </header>
   );
 };

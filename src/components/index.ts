@@ -39,3 +39,4 @@ export { default as Modal } from './common/Modal';
 export { default as TextArea } from './common/TextArea';
 export { default as Menu } from './common/Menu';
 export { default as WarningModal } from './common/WarningModal';
+export { default as BackButton } from './common/BackButton';

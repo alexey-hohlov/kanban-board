@@ -8,7 +8,9 @@ import { uiSlice } from '@/store/reducers/uiReducer';
 import { GitHubIcon } from '@/assets';
 
 const Sidebar: React.FC = () => {
-  const { pinnedBoards, boards } = useAppSelector(state => state.boardReducer);
+  const { favoriteBoards, boards } = useAppSelector(
+    state => state.boardReducer
+  );
   const { setSidebar } = uiSlice.actions;
   const { sidebar } = useAppSelector(state => state.uiReducer);
   const dispatch = useAppDispatch();
@@ -57,7 +59,7 @@ const Sidebar: React.FC = () => {
             onClick={e => e.stopPropagation()}
           >
             <div className='flex flex-col items-center p-4 gap-4 h-full overflow-y-auto'>
-              <h3 className='text-3xl font-black text-sky-400 italic'>Menu</h3>
+              <h3 className='text-3xl font-black text-sky-400'>Menu</h3>
               <ul className='flex flex-col gap-3'>
                 <Link
                   to={ROUTES.HOME.PATH}
@@ -71,10 +73,10 @@ const Sidebar: React.FC = () => {
               </ul>
 
               <ul className='flex flex-col gap-2 items-center mt-2'>
-                <h3 className='text-xl font-black text-sky-400 italic'>
-                  Pinned Boards
+                <h3 className='text-2xl font-bold text-sky-400'>
+                  Favorite Boards
                 </h3>
-                {pinnedBoards.map(id => (
+                {favoriteBoards.map(id => (
                   <Link
                     key={id}
                     to={id}

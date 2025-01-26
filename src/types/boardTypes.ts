@@ -22,6 +22,6 @@ export interface IBoards {
     [key: string]: IBoard;
   };
   boardIds: string[];
-  pinnedBoards: string[];
+  favoriteBoards: string[];
   currentBoardId: string;
 }

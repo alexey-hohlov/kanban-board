@@ -13,7 +13,7 @@ import {
 const initialState: IBoards = {
   boards: {},
   boardIds: [],
-  pinnedBoards: [],
+  favoriteBoards: [],
   currentBoardId: '',
 };
 
@@ -41,23 +41,23 @@ export const boardSlice = createSlice({
       const pinIndex = selectPinnedBoardIndex(state, boardId);
 
       if (pinIndex !== -1) {
-        state.pinnedBoards.splice(pinIndex, 1);
+        state.favoriteBoards.splice(pinIndex, 1);
       }
 
       delete boards[boardId];
       state.boards = boards;
       state.boardIds.splice(boardIndex, 1);
     },
-    togglePinBoard(state, action: PayloadAction<string>) {
-      const boardIndex = state.pinnedBoards.findIndex(
+    toggleFavoriteBoard(state, action: PayloadAction<string>) {
+      const boardIndex = state.favoriteBoards.findIndex(
         id => id === action.payload
       );
       switch (boardIndex) {
         case -1:
-          state.pinnedBoards.push(action.payload);
+          state.favoriteBoards.push(action.payload);
           break;
         default:
-          state.pinnedBoards.splice(boardIndex, 1);
+          state.favoriteBoards.splice(boardIndex, 1);
           break;
       }
     },

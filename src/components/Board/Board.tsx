@@ -24,7 +24,7 @@ import {
   Task,
   SortableColumn,
 } from '@/components';
-import { EditIcon, PinIcon, PinOffIcon } from '@/assets';
+import { AddFavoreteIcon, EditIcon, RemoveFavoriteIcon } from '@/assets';
 import { boardSlice } from '@/store/reducers/boardReducer';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { isInArray } from '@/utils/isInArray';
@@ -38,8 +38,8 @@ const Board: React.FC<Props> = ({ board }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [activeColumn, setActiveColumn] = useState<IColumn | null>(null);
   const [activeTask, setActiveTask] = useState<ITask | null>(null);
-  const { pinnedBoards } = useAppSelector(state => state.boardReducer);
-  const { moveColumn, moveTask, togglePinBoard } = boardSlice.actions;
+  const { favoriteBoards } = useAppSelector(state => state.boardReducer);
+  const { moveColumn, moveTask, toggleFavoriteBoard } = boardSlice.actions;
   const dispatch = useAppDispatch();
 
   const sensors = useSensors(
@@ -57,8 +57,8 @@ const Board: React.FC<Props> = ({ board }) => {
     setIsEditing(prev => !prev);
   };
 
-  const togglePin = () => {
-    dispatch(togglePinBoard(board.id));
+  const toggleFavorite = () => {
+    dispatch(toggleFavoriteBoard(board.id));
   };
 
   const handleDragStart = (event: DragStartEvent) => {
@@ -72,15 +72,15 @@ const Board: React.FC<Props> = ({ board }) => {
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
+    setActiveTask(null);
+    setActiveColumn(null);
+
     const { active, over } = event;
     if (!over) return;
     if (active.id === over.id) return;
     if (active.data.current?.type !== 'column') return;
 
     dispatch(moveColumn({ activeId: active.id, overId: over.id }));
-
-    setActiveTask(null);
-    setActiveColumn(null);
   };
 
   const handleDragOver = (event: DragOverEvent) => {
@@ -108,13 +108,13 @@ const Board: React.FC<Props> = ({ board }) => {
           {board.title}
         </h3>
         <div className='flex'>
-          {isInArray(pinnedBoards, board.id) ? (
-            <Button onClick={togglePin}>
-              <PinOffIcon className='opacity-70' />
+          {isInArray(favoriteBoards, board.id) ? (
+            <Button onClick={toggleFavorite}>
+              <RemoveFavoriteIcon className='fill-yellow-300' />
             </Button>
           ) : (
-            <Button onClick={togglePin}>
-              <PinIcon className='opacity-70' />
+            <Button onClick={toggleFavorite}>
+              <AddFavoreteIcon className='opacity-70 hover:fill-yellow-300 hover:opacity-100' />
             </Button>
           )}
 
