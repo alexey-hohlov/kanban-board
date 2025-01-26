@@ -6,7 +6,7 @@ import { IBoard, IBoards, IColumn, ITask } from '@/types/boardTypes';
 import {
   selectBoardIndex,
   selectColumnIndex,
-  selectPinnedBoardIndex,
+  selectFavoriteBoardIndex,
   selectTaskIndex,
 } from '../selectors';
 
@@ -38,7 +38,7 @@ export const boardSlice = createSlice({
       const { boardId } = action.payload;
       const boards = { ...state.boards };
       const boardIndex = selectBoardIndex(state, boardId);
-      const pinIndex = selectPinnedBoardIndex(state, boardId);
+      const pinIndex = selectFavoriteBoardIndex(state, boardId);
 
       if (pinIndex !== -1) {
         state.favoriteBoards.splice(pinIndex, 1);

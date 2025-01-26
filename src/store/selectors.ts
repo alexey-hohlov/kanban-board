@@ -26,6 +26,6 @@ export const selectBoardIndex = (state: IBoards, boardId: string) => {
   return state.boardIds.findIndex(id => id === boardId);
 };
 
-export const selectPinnedBoardIndex = (state: IBoards, boardID: string) => {
-  return state.pinnedBoards.findIndex(id => id === boardID);
+export const selectFavoriteBoardIndex = (state: IBoards, boardID: string) => {
+  return state.favoriteBoards.findIndex(id => id === boardID);
 };
