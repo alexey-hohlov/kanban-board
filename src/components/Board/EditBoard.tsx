@@ -54,6 +54,7 @@ const EditBoard: React.FC<Props> = ({
               rules={validations.required}
               placeholder={'Board Title'}
               defaultValue={title}
+              autoFocus={true}
             />
             <TextArea
               name={'boardDescription'}

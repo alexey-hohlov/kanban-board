@@ -59,6 +59,7 @@ const EditTask: React.FC<Props> = ({
             rules={validations.required}
             placeholder={'Task Title'}
             defaultValue={title}
+            autoFocus={true}
           />
           <TextArea
             name={'taskContent'}

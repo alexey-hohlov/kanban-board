@@ -7,6 +7,7 @@ interface Props {
   rules?: Record<string, any>;
   name: string;
   defaultValue?: string;
+  autoFocus?: boolean;
 }
 
 const Input: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const Input: React.FC<Props> = ({
   name,
   type = 'text',
   defaultValue = '',
+  autoFocus = false,
 }) => {
   const {
     field,
@@ -43,6 +45,7 @@ const Input: React.FC<Props> = ({
       placeholder={placeholder}
       {...field}
       onBlur={trimValue}
+      autoFocus={autoFocus}
     />
   );
 };

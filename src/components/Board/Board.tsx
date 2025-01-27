@@ -104,7 +104,7 @@ const Board: React.FC<Props> = ({ board }) => {
   return (
     <section className='flex flex-col h-full'>
       <div className='flex items-center justify-between px-2'>
-        <h3 className='font-bold text-2xl italic text-sky-400 line-clamp-1'>
+        <h3 className='font-bold text-2xl text-sky-400 line-clamp-1'>
           {board.title}
         </h3>
         <div className='flex'>
