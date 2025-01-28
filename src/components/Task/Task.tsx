@@ -42,7 +42,7 @@ const Task: React.FC<Props> = ({ task, columnId }) => {
     <li className='flex flex-col gap-1 p-2 bg-slate-900 rounded-xl h-[120px]'>
       <div className='flex justify-between'>
         <h3 className='text-xl text-sky-400 line-clamp-1'>{task.title}</h3>
-        <Menu closeDep={[modal, deleteModal]}>
+        <Menu closeDep={[modal, deleteModal]} id={task.id}>
           <TaskMenu
             showTask={toggleModal}
             editTask={handleEdit}

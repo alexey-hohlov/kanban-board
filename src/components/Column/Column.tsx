@@ -64,7 +64,7 @@ const Column: React.FC<Props> = ({ column }) => {
           <h3 className='line-clamp-1 text-xl font-bold text-sky-400'>
             {column.title}
           </h3>
-          <Menu closeDep={[isAdding, deleteModal]}>
+          <Menu closeDep={[isAdding, deleteModal]} id={column.id}>
             <ColumnMenu
               newTask={toggleAdding}
               editColumn={handleEdit}

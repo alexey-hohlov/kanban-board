@@ -1,25 +1,31 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { MenuIcon } from '@/assets';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { uiSlice } from '@/store/reducers/uiReducer';
 
 interface IProps {
   children: ReactNode;
   closeDep?: boolean | boolean[];
+  id: string;
 }
 
-const Menu: React.FC<IProps> = ({ children, closeDep }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+const Menu: React.FC<IProps> = ({ children, closeDep, id }) => {
+  const isOpen = useAppSelector(state => state.uiReducer.menu === id);
+  const { toggleMenu } = uiSlice.actions;
+  const dispatch = useAppDispatch();
+
   const nodeRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = () => {
-    setIsOpen(prev => !prev);
+    dispatch(toggleMenu(id));
   };
 
   useEffect(() => {
     if (!isOpen) return;
-    setIsOpen(false);
+    dispatch(toggleMenu(id));
   }, [closeDep]);
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const Menu: React.FC<IProps> = ({ children, closeDep }) => {
         !nodeRef.current?.contains(event.target as Node) &&
         !buttonRef.current?.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        dispatch(toggleMenu(id));
       }
     };
 
@@ -48,7 +54,7 @@ const Menu: React.FC<IProps> = ({ children, closeDep }) => {
       }}
     >
       <button className='button' ref={buttonRef} onClick={handleClick}>
-        <MenuIcon />
+        <MenuIcon className='size-7' />
       </button>
       <CSSTransition
         in={isOpen}
