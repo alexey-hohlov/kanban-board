@@ -61,7 +61,7 @@ const BoardItem: React.FC<Props> = ({ board }) => {
           <h3 className='text-3xl font-bold text-sky-400 overflow-hidden text-ellipsis h-10'>
             {board.title}
           </h3>
-          <Menu closeDep={deleteModal}>
+          <Menu closeDep={deleteModal} id={board.id}>
             <BoardMenu
               goToBoard={handleNavigate}
               handleDelete={toggleDeliting}
