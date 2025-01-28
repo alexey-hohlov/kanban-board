@@ -61,6 +61,7 @@ const AddTask: React.FC<Props> = ({ isOpen, onClose, columnId }) => {
               name={'taskTitle'}
               rules={validations.required}
               placeholder={'Task Title'}
+              autoFocus={true}
             />
             <TextArea
               name={'taskContent'}

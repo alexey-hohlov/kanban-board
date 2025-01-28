@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       <div className='flex gap-2'>
         <BackButton />
         <Button onClick={handleSidebar}>
-          <BurgerIcon />
+          <BurgerIcon className='hover:fill-sky-400' />
         </Button>
       </div>
     </header>

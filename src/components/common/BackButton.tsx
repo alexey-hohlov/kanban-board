@@ -13,7 +13,7 @@ const BackButton: React.FC = () => {
   };
 
   return (
-    <Button title='Back' className='flex items-center' onClick={handleBack}>
+    <Button title='Back' className='flex items-center button__back' onClick={handleBack}>
       <BackIcon className='size-4' />
     </Button>
   );

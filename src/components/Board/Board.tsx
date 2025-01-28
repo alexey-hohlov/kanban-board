@@ -119,7 +119,7 @@ const Board: React.FC<Props> = ({ board }) => {
           )}
 
           <Button onClick={toggleEditing}>
-            <EditIcon className='opacity-70' />
+            <EditIcon className='opacity-70 hover:fill-sky-400' />
           </Button>
         </div>
       </div>

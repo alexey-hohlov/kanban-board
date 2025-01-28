@@ -10,3 +10,13 @@
     pointer-events: none;
   }
 }
+
+.button__back {
+  &:hover {
+    color: rgb(56 189 248);
+
+    svg {
+      fill: rgb(56 189 248);
+    }
+  }
+}

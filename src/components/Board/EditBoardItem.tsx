@@ -63,6 +63,7 @@ const EditBoardItem: React.FC<Props> = ({
                 rules={validations.required}
                 placeholder='Board Title'
                 defaultValue={title}
+                autoFocus={true}
               />
               <Input
                 name={'boardDescription'}

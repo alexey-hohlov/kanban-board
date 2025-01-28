@@ -65,6 +65,7 @@ const EditColumn: React.FC<Props> = ({
               rules={validations.required}
               placeholder={'Column Title'}
               defaultValue={title}
+              autoFocus={true}
             />
             <div className='flex justify-center mt-3 gap-4'>
               <Button
