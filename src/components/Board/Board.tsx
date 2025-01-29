@@ -89,16 +89,18 @@ const Board: React.FC<Props> = ({ board }) => {
     if (active.id === over?.id) return;
     if (active.data.current?.type !== 'task') return;
 
-    dispatch(
-      moveTask({
-        activeId: active.id,
-        overId: over.id,
-        sourceColumnId: active.data.current?.columnId,
-        targetColumnId: over.data.current?.columnId
-          ? over.data.current?.columnId
-          : over.id,
-      })
-    );
+    setTimeout(() => {
+      dispatch(
+        moveTask({
+          activeId: active.id,
+          overId: over.id,
+          sourceColumnId: active.data.current?.columnId,
+          targetColumnId: over.data.current?.columnId
+            ? over.data.current?.columnId
+            : over.id,
+        })
+      );
+    }, 0);
   };
 
   return (
