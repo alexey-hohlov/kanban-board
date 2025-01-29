@@ -14,3 +14,13 @@
   opacity: 0;
   transition: opacity 200ms linear;
 }
+
+.menu-item__hover {
+  &:hover {
+    color: rgb(56 189 248);
+
+    svg {
+      fill: rgb(56 189 248);
+    }
+  }
+}

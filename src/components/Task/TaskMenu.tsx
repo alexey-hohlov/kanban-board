@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon, ShowIcon } from '@/assets';
+import { DeleteIcon, EditIcon, GoToIcon } from '@/assets';
 import { Button } from '@/components';
 
 interface Props {
@@ -11,19 +11,28 @@ const TaskMenu: React.FC<Props> = ({ showTask, editTask, deleteTask }) => {
   return (
     <ul>
       <li>
-        <Button className='flex items-center gap-1' onClick={showTask}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={showTask}
+        >
           show task
-          <ShowIcon className='size-4' />
+          <GoToIcon className='size-4' />
         </Button>
       </li>
       <li>
-        <Button className='flex items-center gap-1' onClick={editTask}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={editTask}
+        >
           edit task
           <EditIcon className='size-4' />
         </Button>
       </li>
       <li>
-        <Button className='flex items-center gap-1' onClick={deleteTask}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={deleteTask}
+        >
           delete task
           <DeleteIcon className='size-4' />
         </Button>

@@ -21,7 +21,6 @@ export { default as SortableColumn } from './Column/SortableColumn';
 export { default as Task } from './Task/Task';
 export { default as AddTask } from './Task/AddTask';
 export { default as TaskMenu } from './Task/TaskMenu';
-export { default as TaskModal } from './Task/TaskModal';
 export { default as EditTask } from './Task/EditTask';
 export { default as ShowTask } from './Task/ShowTask';
 export { default as SortableTask } from './Task/SortableTask';

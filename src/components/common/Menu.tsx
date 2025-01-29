@@ -54,7 +54,7 @@ const Menu: React.FC<IProps> = ({ children, closeDep, id }) => {
       }}
     >
       <button className='button' ref={buttonRef} onClick={handleClick}>
-        <MenuIcon className='size-7' />
+        <MenuIcon className='size-7 hover:fill-sky-400' />
       </button>
       <CSSTransition
         in={isOpen}

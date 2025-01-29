@@ -15,19 +15,28 @@ const BoardMenu: React.FC<Props> = ({
   return (
     <ul>
       <li>
-        <Button className='flex items-center gap-1' onClick={goToBoard}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={goToBoard}
+        >
           go to board
           <GoToIcon className='size-4' />
         </Button>
       </li>
       <li>
-        <Button className='flex items-center gap-1' onClick={handleEdit}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={handleEdit}
+        >
           edit board
           <EditIcon className='size-4' />
         </Button>
       </li>
       <li>
-        <Button className='flex items-center gap-1' onClick={handleDelete}>
+        <Button
+          className='menu-item__hover flex items-center gap-1'
+          onClick={handleDelete}
+        >
           delete board
           <DeleteIcon className='size-4' />
         </Button>

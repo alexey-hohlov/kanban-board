@@ -44,7 +44,7 @@ const Modal: React.FC<Props> = ({ children, isOpen, onClose }) => {
             unmountOnExit
           >
             <div
-              className='cursor-default'
+              className='cursor-default bg-slate-950 w-96 shadow-xl rounded-xl p-4'
               ref={contentRef}
               onMouseDown={e => e.stopPropagation()}
             >

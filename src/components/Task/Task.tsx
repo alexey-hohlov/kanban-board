@@ -1,10 +1,16 @@
 import { useState } from 'react';
 
 import { ITask } from '@/types/boardTypes';
-import { Menu, TaskMenu, TaskModal, WarningModal } from '@/components';
+import {
+  EditTask,
+  Menu,
+  Modal,
+  ShowTask,
+  TaskMenu,
+  WarningModal,
+} from '@/components';
 import { boardSlice } from '@/store/reducers/boardReducer';
 import { useAppDispatch } from '@/hooks/reduxHooks';
-import { uiSlice } from '@/store/reducers/uiReducer';
 
 interface Props {
   task: ITask;
@@ -13,23 +19,22 @@ interface Props {
 
 const Task: React.FC<Props> = ({ task, columnId }) => {
   const { deleteTask } = boardSlice.actions;
-  const { setIsEditing } = uiSlice.actions;
   const dispatch = useAppDispatch();
 
-  const [modal, setModal] = useState<boolean>(false);
+  const [showTask, setShowTask] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
+
+  const toggleShow = () => {
+    setShowTask(prev => !prev);
+  };
+
+  const toggleEditing = () => {
+    setIsEditing(prev => !prev);
+  };
 
   const toggleDeleting = () => {
     setDeleteModal(prev => !prev);
-  };
-
-  const toggleModal = () => {
-    setModal(prev => !prev);
-  };
-
-  const handleEdit = () => {
-    dispatch(setIsEditing(true));
-    toggleModal();
   };
 
   const handleDelete = () => {
@@ -42,23 +47,33 @@ const Task: React.FC<Props> = ({ task, columnId }) => {
     <li className='flex flex-col gap-1 p-2 bg-slate-900 rounded-xl h-[120px]'>
       <div className='flex justify-between'>
         <h3 className='text-xl text-sky-400 line-clamp-1'>{task.title}</h3>
-        <Menu closeDep={[modal, deleteModal]} id={task.id}>
+        <Menu id={task.id} closeDep={[showTask, isEditing, deleteModal]}>
           <TaskMenu
-            showTask={toggleModal}
-            editTask={handleEdit}
+            showTask={toggleShow}
+            editTask={toggleEditing}
             deleteTask={toggleDeleting}
           />
         </Menu>
       </div>
       <p className='line-clamp-3 break-words'>{task.content}</p>
-      <TaskModal
-        isOpen={modal}
-        onClose={toggleModal}
-        title={task.title}
-        content={task.content}
-        taskId={task.id}
-        columnId={columnId}
-      />
+      <Modal isOpen={showTask} onClose={toggleShow}>
+        <ShowTask
+          title={task.title}
+          content={task.content}
+          taskId={task.id}
+          columnId={columnId}
+          onClose={toggleShow}
+        />
+      </Modal>
+      <Modal isOpen={isEditing} onClose={toggleEditing}>
+        <EditTask
+          title={task.title}
+          content={task.content}
+          taskId={task.id}
+          columnId={columnId}
+          onClose={toggleEditing}
+        />
+      </Modal>
       <WarningModal
         isOpen={deleteModal}
         onClose={toggleDeleting}

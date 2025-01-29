@@ -15,7 +15,7 @@ const WarningModal: React.FC<Props> = ({
 }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className='bg-slate-950 shadow-xl rounded-xl p-4 flex flex-col gap-4 w-96'>
+      <div className='flex flex-col gap-4'>
         <h3 className='text-2xl text-center text-rose-500 font-bold'>
           Warning!
         </h3>

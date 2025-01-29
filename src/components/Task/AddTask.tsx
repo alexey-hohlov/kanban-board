@@ -48,7 +48,7 @@ const AddTask: React.FC<Props> = ({ isOpen, onClose, columnId }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
-      <div className='bg-slate-950 shadow-xl rounded-xl p-4 flex flex-col gap-4 w-96'>
+      <div className='flex flex-col gap-4'>
         <h3 className='text-2xl text-center text-sky-400 font-bold'>
           Add New Task
         </h3>

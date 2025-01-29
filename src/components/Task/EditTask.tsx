@@ -42,7 +42,8 @@ const EditTask: React.FC<Props> = ({
     reset();
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e: React.MouseEvent) => {
+    e.preventDefault();
     onClose();
     reset();
   };
