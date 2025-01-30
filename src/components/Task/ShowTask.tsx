@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Button, EditTask } from '@/components';
+import { EditIcon } from '@/assets';
 
 interface Props {
   title: string;
@@ -41,6 +42,9 @@ const ShowTask: React.FC<Props> = ({
         <h3 className='text-2xl text-sky-400 font-bold line-clamp-1'>
           {title}
         </h3>
+        <Button onClick={toggleEditing}>
+          <EditIcon className='opacity-80 hover:fill-sky-400' />
+        </Button>
       </div>
       {content.length ? (
         <p className='bg-slate-900 p-2 rounded-xl min-h-40 max-h-96 overflow-y-auto break-words'>
@@ -51,18 +55,11 @@ const ShowTask: React.FC<Props> = ({
           (empty)
         </span>
       )}
-      <div className='flex justify-center gap-4'>
-        <Button
-          title='Edit'
-          className='border-2 border-sky-500 text-sky-400 flex-1'
-          onClick={toggleEditing}
-        />
-        <Button
-          onClick={handleClose}
-          title='Close'
-          className='border-2 border-rose-500 flex-1 text-rose-500'
-        />
-      </div>
+      <Button
+        onClick={handleClose}
+        title='Close'
+        className='border-2 border-rose-500 text-rose-500'
+      />
     </div>
   );
 };
