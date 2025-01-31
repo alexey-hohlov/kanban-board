@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   DndContext,
   DragEndEvent,
@@ -41,6 +41,11 @@ const Board: React.FC<Props> = ({ board }) => {
   const { favoriteBoards } = useAppSelector(state => state.boardReducer);
   const { moveColumn, moveTask, toggleFavoriteBoard } = boardSlice.actions;
   const dispatch = useAppDispatch();
+
+  const columnIds = useMemo(
+    () => board.columns.map(item => item.id),
+    [board.columns]
+  );
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
@@ -89,18 +94,16 @@ const Board: React.FC<Props> = ({ board }) => {
     if (active.id === over?.id) return;
     if (active.data.current?.type !== 'task') return;
 
-    setTimeout(() => {
-      dispatch(
-        moveTask({
-          activeId: active.id,
-          overId: over.id,
-          sourceColumnId: active.data.current?.columnId,
-          targetColumnId: over.data.current?.columnId
-            ? over.data.current?.columnId
-            : over.id,
-        })
-      );
-    }, 0);
+    dispatch(
+      moveTask({
+        activeId: active.id,
+        overId: over.id,
+        sourceColumnId: active.data.current?.columnId,
+        targetColumnId: over.data.current?.columnId
+          ? over.data.current?.columnId
+          : over.id,
+      })
+    );
   };
 
   return (
@@ -134,7 +137,7 @@ const Board: React.FC<Props> = ({ board }) => {
       >
         <ul className='flex py-2 gap-4 h-full w-full overflow-x-auto'>
           <SortableContext
-            items={board.columns}
+            items={columnIds}
             strategy={horizontalListSortingStrategy}
           >
             {board.columns.map(col => (

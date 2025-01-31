@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -29,6 +29,11 @@ const Column: React.FC<Props> = ({ column }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [isAdding, setIsAdding] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
+
+  const taskIds = useMemo(
+    () => column.tasks.map(item => item.id),
+    [column.tasks]
+  );
 
   const toggleDeliting = () => {
     setDeleteModal(prev => !prev);
@@ -74,7 +79,7 @@ const Column: React.FC<Props> = ({ column }) => {
         </div>
         <ul className='h-full flex flex-col gap-2 overflow-y-auto overflow-x-hidden px-2'>
           <SortableContext
-            items={column.tasks}
+            items={taskIds}
             strategy={verticalListSortingStrategy}
           >
             {column.tasks.map(task => (
