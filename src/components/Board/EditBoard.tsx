@@ -40,44 +40,39 @@ const EditBoard: React.FC<Props> = ({
 
   return (
     <Modal onClose={onClose} isOpen={isOpen}>
-      <div className='bg-slate-950 shadow-xl rounded-xl p-4 flex flex-col gap-4 w-96'>
-        <h3 className='text-2xl text-center text-sky-400 font-bold line-clamp-1'>
-          {title}
-        </h3>
-        <FormProvider {...methods}>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className='flex flex-col gap-4'
-          >
-            <Input
-              name={'boardTitle'}
-              rules={validations.required}
-              placeholder={'Board Title'}
-              defaultValue={title}
-              autoFocus={true}
+      <h3 className='text-2xl text-center text-sky-400 font-bold line-clamp-1'>
+        {title}
+      </h3>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
+          <Input
+            name={'boardTitle'}
+            rules={validations.required}
+            placeholder={'Board Title'}
+            defaultValue={title}
+            autoFocus={true}
+          />
+          <TextArea
+            name={'boardDescription'}
+            rules={validations.required}
+            placeholder={'Board Description'}
+            rows={10}
+            defaultValue={description}
+          />
+          <div className='flex justify-center gap-4'>
+            <Button
+              title='Save'
+              className='border-2 border-sky-500 flex-1 text-sky-400'
+              disabled={!formState.isDirty}
             />
-            <TextArea
-              name={'boardDescription'}
-              rules={validations.required}
-              placeholder={'Board Description'}
-              rows={10}
-              defaultValue={description}
+            <Button
+              onClick={handleCancel}
+              title='Cancel'
+              className='border-2 border-rose-500 flex-1 text-rose-500'
             />
-            <div className='flex justify-center gap-4'>
-              <Button
-                title='Save'
-                className='border-2 border-sky-500 flex-1 text-sky-400'
-                disabled={!formState.isDirty}
-              />
-              <Button
-                onClick={handleCancel}
-                title='Cancel'
-                className='border-2 border-rose-500 flex-1 text-rose-500'
-              />
-            </div>
-          </form>
-        </FormProvider>
-      </div>
+          </div>
+        </form>
+      </FormProvider>
     </Modal>
   );
 };
