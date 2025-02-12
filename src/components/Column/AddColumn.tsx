@@ -24,6 +24,7 @@ const AddColumn: React.FC = () => {
   };
 
   const handleCancel = () => {
+    setIsAdding(false);
     reset();
   };
 
